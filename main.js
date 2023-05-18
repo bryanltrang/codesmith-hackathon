@@ -1,5 +1,23 @@
 // Retrieve all text nodes from the document
 const textNodes = document.querySelectorAll("p");
+const mainContainer = document.createElement('div');
+const numberFactTitle = document.createElement('h1');
+numberFactTitle.textContent = 'Here are your number facts!';
+mainContainer.appendChild(numberFactTitle);
+mainContainer.style.backgroundColor = 'rgb(112, 229, 191)';
+mainContainer.setAttribute('class', 'main');
+mainContainer.style.display = 'flex';
+mainContainer.style.justifyContent = 'space-between';
+mainContainer.style.maxWidth = '100%';
+mainContainer.style.flexWrap = 'wrap';
+mainContainer.style.flexDirection = 'column';
+
+const endOfMain = document.createElement('h1');
+endOfMain.textContent = 'Now you can enjoy your website! :)';
+endOfMain.style.backgroundColor = 'rgb(112, 229, 191)';
+document.body.prepend(endOfMain);
+
+document.body.prepend(mainContainer);
 
 textNodes.forEach((node) => {
   let textArray = node.textContent.split(" ");
@@ -14,14 +32,16 @@ textNodes.forEach((node) => {
 
           const popup = document.createElement("div");
           popup.innerText = `${data}`;
-          popup.style.color = "red";
-          popup.style.backgroundColor = "white";
-          popup.style.border = "4px";
-          popup.style.position = "absolute";
-          popup.style.marginTop = "-20px";
+          popup.style.color = "rgb(156, 54, 62)";
+          popup.style.fontWeight = 'bold';
+          popup.style.marginTop = '8px';
           popup.style.top = "0";
-
-          node.appendChild(popup);
+          popup.style.maxWidth = 'max-content';
+          /**
+           * if the current div is not overlapping any new divs, node.prepend(popup)
+           * else, body.prepend(popup)
+           */
+          mainContainer.appendChild(popup);
         });
     }
   });
